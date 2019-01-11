@@ -35,7 +35,7 @@ namespace NewAzureTestWebApp.Models
                 throw new ArgumentException("A triangle has only 3 sides");
             }
             if (!CanFormTriangle(sides))
-                throw new ArgumentException("Input numbers can't for a triangle");
+                throw new ArgumentException("Input numbers can't form a triangle");
             
             // Clone to avoid references
             Sides = sides.ToArray();
