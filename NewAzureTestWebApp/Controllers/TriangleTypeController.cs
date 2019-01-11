@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewAzureTestWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,35 +15,17 @@ namespace NewAzureTestWebApp.Controllers
         {
             try
             {
-                return GetTriangleType(int.Parse(a), int.Parse(b), int.Parse(c));
+                int[] sides = { int.Parse(a), int.Parse(b), int.Parse(c) };
+                return new Triangle(sides).Type;
             }
             catch (FormatException)
             {
                 return new { message = "The request is invalid." };
             }
-        }
-        private bool CanFormTriangle(params int[] sides)
-        {
-            if (sides.Length != 3 ||
-                sides.Any(x => x <= 0) ||
-                sides[0]+sides[1]<=sides[2] ||
-                sides[0]+sides[2]<=sides[1] ||
-                sides[1]+sides[2]<=sides[0])
-                return false;
-            return true;
-        }
-        private string GetTriangleType(params int[] sides)
-        {
-            if (!CanFormTriangle(sides))
+            catch (ArgumentException ex)
             {
-                return "Error";
+                return $"Error: {ex.Message}";
             }
-            if (sides[0] == sides[1] && sides[1] == sides[2])
-                return "Equilateral";
-            else if (sides[0] == sides[1] || sides[0] == sides[2] || sides[1] == sides[2])
-                return "Isosceles";
-            else
-                return "Scalene";
         }
     }
 }
