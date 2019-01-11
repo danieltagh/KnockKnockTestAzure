@@ -1,14 +1,45 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization;
+@Styles.Render("~/Content/home.css")
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/home.css")>
+    <!--    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Views/Home/home.css")> -->
 </head>
 <body>
     <div class="pageheader">
-        <h1 class="titlecenter"> This is a WebApi Test Project</h1>
+        <h1 class="titlecenter">This is a simple WebApi Test Project</h1>
     </div>
+    <div class="container">
+        <div class="container__item">
+            <h4>Fibonacci :</h4>
+            <p>This methods take an integer within the range of [-92,92] and returns the Fibonacci's element of the input</p>
+            <form class="form" action="/api/Fibonacci" target="_blank">
+                <input type="text" class="form__field" placeholder="Enter a number" name="n" />
+                <button class="btn btn--primary btn--inside uppercase">Send</button>
+            </form>
+        </div>
+        <div class="container__item">
+            <h4>Reverse Words :</h4>
+            <p>This methods take a sentence and reverses words within it</p>
+            <form class="form" action="/api/ReverseWords" target="_blank">
+                <input type="text" class="form__field" placeholder="Enter a text" name="sentence" />
+                <button class="btn btn--primary btn--inside uppercase">Send</button>
+            </form>
+        </div>
+        <div class="container__item">
+            <h4>Triangle Type :</h4>
+            <p>This methods takes three integers as a triangle's sides and tells you what type is your triangle</p>
+            <form class="form" action="/api/TriangleType" target="_blank">
+                <input type="text" class="form__field" placeholder="Enter Side A" name="a" />
+                <input type="text" class="form__field" placeholder="Enter Side B" name="b" />
+                <input type="text" class="form__field" placeholder="Enter Side C" name="c" />
+                <button class="btn btn--primary btn--inside uppercase">Send</button>
+            </form>
+        </div>
 
+    </div>
 </body>
 </html>

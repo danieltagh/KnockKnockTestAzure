@@ -17,11 +17,11 @@ namespace NewAzureTestWebApp.Controllers
                 long numN = long.Parse(n);
                 long absN = Math.Abs(numN);
                 if (absN > 92)
-                    throw new HttpResponseException(HttpStatusCode.BadRequest);
+                    throw new ArgumentException();
                 else
                     return Fibo(absN) * (numN < 0  && absN % 2 == 0 ? -1 : 1);
             }
-            catch (FormatException)
+            catch (Exception ex) when (ex is ArgumentException || ex is FormatException)
             {
                 return new { message = "The request is invalid." };
             }
